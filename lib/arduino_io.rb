@@ -4,7 +4,7 @@ class ArduinoIO
   def initialize(port_no=nil)
     if port_no
       @io = Serial.new
-      @port_no = port_no  #COMƒ|[ƒg‚Ì”Ô†
+      @port_no = port_no  #COMãƒãƒ¼ãƒˆã®ç•ªå·
       @io.open(@port_no,0x0000,9600,8,0,0,256,256)
     end
     raise 'Arduino is not connected.' unless @io

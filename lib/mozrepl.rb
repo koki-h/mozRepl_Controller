@@ -10,7 +10,6 @@ class MozReplCon
   end
 
   def wait
-    note_on = false
     count = 0
     while 1 do
       data = @aio.read
