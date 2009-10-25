@@ -3,7 +3,7 @@
 #define UP_BUTTON_PIN     10
 #define RIGHT_BUTTON_PIN  11
 #define RELOAD_BUTTON_PIN 12
-
+#define LED               13
 #define BUTTON_DELAY 400
 
 int reload_stat = 0;
@@ -11,6 +11,12 @@ int up_stat     = 0;
 int down_stat   = 0;
 int right_stat  = 0;
 int left_stat   = 0;
+void sendSignal(char signal){
+  digitalWrite(LED,HIGH);
+  Serial.print(signal);
+  delay(BUTTON_DELAY);
+  digitalWrite(LED,LOW);
+}
 void setup()
 {
   pinMode(RIGHT_BUTTON_PIN,INPUT);
@@ -26,23 +32,18 @@ void loop()
   right_stat = digitalRead(RIGHT_BUTTON_PIN);
   left_stat  = digitalRead(LEFT_BUTTON_PIN);
   if (reload_stat == HIGH){
-    Serial.print('O');
-    delay(BUTTON_DELAY);
+    sendSignal('O');
   } 
   if (up_stat == HIGH){
-    Serial.print('U');
-    delay(BUTTON_DELAY);
+    sendSignal('U');
   } 
   if (down_stat == HIGH){
-    Serial.print('D');
-    delay(BUTTON_DELAY);
+    sendSignal('D');
   } 
   if (right_stat == HIGH){
-    Serial.print('R');
-    delay(BUTTON_DELAY);
+    sendSignal('R');
   } 
   if(left_stat == HIGH){
-    Serial.print('L');
-    delay(BUTTON_DELAY);
+    sendSignal('L');
   }
 }
